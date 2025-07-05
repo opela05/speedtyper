@@ -1,0 +1,28 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  #word-container {
+    font-size: 24px;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    word-break: break-word;
+  }
+  
+  .correct {
+    color: limegreen;
+  }
+  
+  .incorrect {
+    color: tomato;
+  }
+  
+  #typed-input {
+    text-align: center;
+  }
+  
+  #restart:hover {
+    transform: scale(1.05);
+    transition: 0.2s ease;
+  }
+  
