@@ -3,6 +3,7 @@
 console.log(1000);
 
 const wordCount = 15;
+console.log(document.querySelector("#btn"))
 
 let currentWordIndex = 0;
 let currentLetterIndex = 0;
@@ -16,11 +17,13 @@ fetch('words.json')
 
     for (let i = 0; i < wordCount; i++) {
       const word = words[Math.floor(Math.random() * words.length)];
-      const letterSpans = word
+      const letterSpans = `${word} `
         .split('')
-        .map(letter => `<span class="letter">${letter}</span>`) 
+        .map(letter => `<span class="letter">${letter}</span>`)
         .join('');
-      output += `<span class="word">${letterSpans}</span> `;
+      
+      output += `<span class="word">${letterSpans}</span>`;
+      
     }
 
     wordGrid.innerHTML = output.trim();
@@ -28,41 +31,49 @@ fetch('words.json')
     wordSpans = document.querySelectorAll('.word');
     letterSpans = wordSpans[currentWordIndex].querySelectorAll('.letter');
 
-    document.addEventListener('keydown', (e) => {
-      if (!wordSpans) return;
-
-      if (e.key === ' ') {
-        e.preventDefault();
-        currentWordIndex++;
-        currentLetterIndex = 0;
-
-        if (wordSpans[currentWordIndex]) {
-          letterSpans = wordSpans[currentWordIndex].querySelectorAll('.letter');
-        }
-        return;
-      }
-
-      if (e.key === 'Backspace') {
-        if (currentLetterIndex > 0) {
-          currentLetterIndex--;
-          const letter = letterSpans[currentLetterIndex];
-          letter.classList.remove('correct', 'incorrect');
-        }
-        return;
-      }
-
-      if (e.key.length === 1 && currentLetterIndex < letterSpans.length) {
-        const letter = letterSpans[currentLetterIndex];
-        const expected = letter.textContent;
-
-        if (e.key === expected) {
-          letter.classList.add('correct');
-        } else {
-          letter.classList.add('incorrect');
-        }
-
-        currentLetterIndex++;
-      }
-    });
+    typing();
   })
-  .catch(error => console.error('Error loading words.json:', error));
+  .catch(error => console.error('err w json', error));
+
+  function typing() {
+    document.addEventListener('keydown', handleTyping);
+}
+  
+function handleTyping(e) {
+  if (!wordSpans || !letterSpans) return;
+
+  if (e.key === 'Backspace') {
+    if (currentLetterIndex > 0) {
+      currentLetterIndex--;
+      const letter = letterSpans[currentLetterIndex];
+      letter.classList.remove('correct', 'incorrect');
+    }
+    return;
+  }
+
+  if (e.key.length === 1) {
+    if (currentLetterIndex < letterSpans.length) {
+      const letter = letterSpans[currentLetterIndex];
+      const expected = letter.textContent;
+
+      if (e.key === expected) {
+        letter.classList.add('correct');
+      } else {
+        letter.classList.add('incorrect');
+      }
+
+      currentLetterIndex++;
+    }
+
+    if (currentLetterIndex === letterSpans.length) {
+      currentWordIndex++;
+      currentLetterIndex = 0;
+
+      if (wordSpans[currentWordIndex]) {
+        letterSpans = wordSpans[currentWordIndex].querySelectorAll('.letter');
+      }
+    }
+  }
+}
+
+  
