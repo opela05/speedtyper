@@ -15,7 +15,7 @@ This is project for me to gain better understanding of vanilla JS, HTML/CSS> A t
 ## Word List Source
 
 The `words.json` file used in this project is based on the open-source word list from:  
-[https://github.com/monkeytypegame/monkeytype](https://github.com/monkeytypegame/monkeytype)
+[https://github.com/RazorSh4rk/random-word-api/blob/master/words.json](https://github.com/RazorSh4rk/random-word-api/blob/master/words.json)
 
 ## Future Scope
 
