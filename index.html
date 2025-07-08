@@ -17,38 +17,50 @@
 </head>
 
 <body class="bg-dark text-light font-monospace">
-  <div class="header-container"></div>
+  <header class="header-container"></header>
   <div class="top-bar">
-    <!-- Left: Language -->
     <div class="bar-item language">🌐 english</div>
-  
-    <!-- Right: Timer -->
-    <div class="bar-item">
-      <div class="mr-2"><i class="bi bi-123"></i> words</div>
-      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-        <label class="btn btn-outline-light active">
-          <input type="radio" name="timer" value="10" checked> 10
-        </label>
-        <label class="btn btn-outline-light">
-          <input type="radio" name="timer" value="15"> 15
-        </label>
-        <label class="btn btn-outline-light">
-          <input type="radio" name="timer" value="20"> 20
-        </label>
+    
+      <div class="bar-item">
+        <div class="label"><i class="bi bi-123"></i> words   </div>
+        <div class="btn-group btn-group-toggle count" data-toggle="buttons">
+          <label class="btn btn-custom active">
+            <input type="radio" name="count" value="10" checked> 10
+          </label>
+          <label class="btn btn-custom">
+            <input type="radio" name="count" value="15"> 15
+          </label>
+          <label class="btn btn-custom">
+            <input type="radio" name="count" value="20"> 20
+          </label>
+        </div>
+      </div>
+    
+      <div class="bar-item">
+        <div class="label"><i class="bi bi-clock"></i> time   </div>
+        <div class="btn-group btn-group-toggle timer" data-toggle="buttons">
+          <label class="btn btn-custom active">
+            <input type="radio" name="timer" value="30" checked> 30s
+          </label>
+          <label class="btn btn-custom">
+            <input type="radio" name="timer" value="60"> 60s
+          </label>
+          <label class="btn btn-custom">
+            <input type="radio" name="timer" value="90"> 90s
+          </label>
+        </div>
       </div>
     </div>
-  </div>
-  
   </div>
 
   <main class="container my-4">
     <div class="word-grid-container">
+      <div id="timer-display"></div>
       <div class="word-grid"></div>
     </div>
 
     <div class="shortcut-hint mt-4 d-flex flex-column flex-sm-row justify-content-between text-muted small">
       <span><kbd>tab</kbd> + <kbd>enter</kbd> – restart test</span>
-      <span><kbd>esc</kbd> or <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>p</kbd> – command line</span>
     </div>
   </main>
 
