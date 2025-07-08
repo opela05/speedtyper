@@ -177,3 +177,11 @@ kbd {
   text-align: left;
 }
 
+.result-box {
+  background-color: rgb(33, 36, 39);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+}
